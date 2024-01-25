@@ -1,6 +1,6 @@
 using System; //To exceed requirements, I set up a catch block function that handles System.IO.Excpetions. These lines of code will execute when an IOException is thrown. If the program doesn encounter an error, it will print a message indicating so, but will still function.//
 
-class Program
+public class Program
 {
     static void Main()
     {
