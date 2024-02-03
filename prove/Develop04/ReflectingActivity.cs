@@ -14,7 +14,6 @@ public class ReflectingActivity : Activity
 
     private void InitializePrompts()
     {
-        // Initialize prompts here
         _prompts = new List<string>
         {
             "Think of a time when you stood up for someone else.",
@@ -26,7 +25,6 @@ public class ReflectingActivity : Activity
 
     private void InitializeQuestions()
     {
-        // Initialize questions here
         _questions = new List<string>
         {
             "Why was this experience meaningful to you?",
@@ -70,7 +68,7 @@ public class ReflectingActivity : Activity
     {
         Console.WriteLine("Prompt: " + GetRandomPrompt());
         Console.WriteLine("You have a few seconds to think...");
-        ShowSpinner(5); // Show spinner for 5 seconds
+        ShowSpinner(5); 
     }
 
     public void DisplayQuestions()
@@ -78,7 +76,7 @@ public class ReflectingActivity : Activity
         foreach (var question in _questions)
         {
             Console.WriteLine($"Question: {question}");
-            ShowSpinner(5); // Show spinner for 5 seconds
+            ShowSpinner(5); 
         }
     }
 }

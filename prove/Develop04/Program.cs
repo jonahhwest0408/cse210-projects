@@ -4,9 +4,9 @@ class Program
 {
     static void Main(string[] args)
     {
-        ShowMenu(); // Initial display of menu options
+        ShowMenu();
 
-        // Loop to handle user input
+        
         bool quit = false;
         while (!quit)
         {
@@ -60,7 +60,7 @@ class Program
 
     static void ShowMenu()
     {
-        // Display menu options
+        
         Console.WriteLine("Menu Options:");
         Console.WriteLine("1. Start breathing activity");
         Console.WriteLine("2. Start reflecting activity");

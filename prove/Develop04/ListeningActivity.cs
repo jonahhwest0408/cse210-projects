@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class ListeningActivity : Activity
 {
-    private int _count; // Private field to keep track of the number of items listed
+    private int _count; 
     private List<string> _prompts;
 
     public ListeningActivity(string name, string description, int duration) : base(name, description, duration)
@@ -13,7 +13,6 @@ public class ListeningActivity : Activity
 
     private void InitializePrompts()
     {
-        // Initialize prompts here
         _prompts = new List<string>
         {
             "Who are people that you appreciate?",
@@ -28,14 +27,14 @@ public class ListeningActivity : Activity
     {
         DisplayStartingMessage();
         string randomPrompt = GetRandomPrompt();
-        Console.WriteLine("Prompt: " + randomPrompt); // Displaying the random prompt
+        Console.WriteLine("Prompt: " + randomPrompt); 
         Console.WriteLine("You have a few seconds to think...");
-        ShowCountDown(5); // Show countdown for 5 seconds
+        ShowCountDown(5); 
         GetListFromUser();
         DisplayEndingMessage();
     }
 
-    public string GetRandomPrompt() // Added GetRandomPrompt method
+    public string GetRandomPrompt() 
     {
         Random rnd = new Random();
         int index = rnd.Next(_prompts.Count);
