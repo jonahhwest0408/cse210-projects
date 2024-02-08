@@ -7,7 +7,7 @@ public class ChecklistGoal : Goal
     private int _bonus;
     public int AmountCompleted => _amountCompleted;
     public int Target => _target;
- 
+
     public ChecklistGoal(string name, string description, string points, int amountCompleted, int target, int bonus) : base(name, description, points)
     {
         _target = target;
@@ -47,6 +47,6 @@ public class ChecklistGoal : Goal
         {
             //add bonus points//
         }
-        
+
     }
 }

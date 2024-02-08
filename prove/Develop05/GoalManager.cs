@@ -97,7 +97,7 @@ public class GoalManager
         string name, description, points;
         int bonusFrequency = 0;
         int bonusPoints = 0;
-        
+
         Console.Write("What is the name of your goal? ");
         name = Console.ReadLine();
 
@@ -280,7 +280,4 @@ public class GoalManager
     Start(); 
     }
 
-    
 }
-
-

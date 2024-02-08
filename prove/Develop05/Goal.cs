@@ -9,7 +9,7 @@ public abstract class Goal
 
     public string Name => _shortName;
     public string Description => _description;
-    
+
     public string Points
     {
         get { return _points; }
@@ -28,7 +28,7 @@ public abstract class Goal
     }
 
     public abstract bool IsComplete();
-    
+
 
     public virtual string GetDetailsString()
     {
