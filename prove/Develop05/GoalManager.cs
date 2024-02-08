@@ -68,6 +68,7 @@ public class GoalManager
 
     public void ListGoalDetails()
     {
+        Console.WriteLine($"Current Score: {_score}");
         Console.WriteLine("List of Goal Details:");
 
         foreach (var goal in _goals)
@@ -140,7 +141,7 @@ public class GoalManager
 
     public void RecordEvent()
     {
-        Console.WriteLine("Your goals are:"); //display the list of goals with corresponding numbers//
+        Console.WriteLine("Your goals are:");
         for (int i = 0; i < _goals.Count; i++)
         {
             var goal = _goals[i];
@@ -154,17 +155,31 @@ public class GoalManager
         if (int.TryParse(Console.ReadLine(), out int selectedGoalIndex) && selectedGoalIndex > 0 && selectedGoalIndex <= _goals.Count)
         {
             var selectedGoal = _goals[selectedGoalIndex - 1];
-            int pointsEarned = int.Parse(selectedGoal.Points);
-            _score += pointsEarned;
 
             if (selectedGoal is ChecklistGoal checklistGoal)
             {
-                checklistGoal.RecordCompletion();
+                if (checklistGoal.IsComplete())
+                {
+                    Console.WriteLine("This goal has already been completed the necessary number of times.");
+                    Start();
+                    return;
+                }
+                else
+                {
+                    int pointsEarned = int.Parse(selectedGoal.Points);
+                    _score += pointsEarned;
+                    checklistGoal.RecordCompletion();
+                    Console.WriteLine($"Congratulations! You now have earned {pointsEarned} points!");
+                    DisplayPlayerInfo();
+                }
             }
-
-            Console.WriteLine($"Congratulations! You now have earned {pointsEarned} points!");
-
-            DisplayPlayerInfo();
+            else
+            {
+                int pointsEarned = int.Parse(selectedGoal.Points);
+                _score += pointsEarned;
+                Console.WriteLine($"Congratulations! You now have earned {pointsEarned} points!");
+                DisplayPlayerInfo();
+            }
         }
         else
         {
