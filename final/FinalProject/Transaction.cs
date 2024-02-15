@@ -5,16 +5,17 @@ public enum TransactionType
     CheckOut,
     Return
 }
+
 public class Transaction
 {
-    public LibraryItem LibraryItem { get; set; }
+    public LibraryItem Item { get; set; }
     public Member Member { get; set; }
     public DateTime Date { get; set; }
     public TransactionType Type { get; set; }
 
-    public Transaction(LibraryItem libraryItem, Member member, DateTime date, TransactionType type)
+    public Transaction(LibraryItem item, Member member, DateTime date, TransactionType type)
     {
-        LibraryItem = libraryItem;
+        Item = item;
         Member = member;
         Date = date;
         Type = type;
@@ -25,12 +26,26 @@ public class Transaction
         switch (Type)
         {
             case TransactionType.CheckOut:
-                LibraryItem.CheckOut();
-                Member.BorrowItem(LibraryItem);
+                if (Item is LibraryBook book && Member != null)
+                {
+                    book.CheckOut();
+                    Member.BorrowItem(book);
+                }
+                else
+                {
+                    Console.WriteLine("Invalid transaction: Unable to check out item.");
+                }
                 break;
             case TransactionType.Return:
-                LibraryItem.Return();
-                Member.ReturnItem(LibraryItem);
+                if (Item is LibraryBook returnBook && Member != null)
+                {
+                    returnBook.Return();
+                    Member.ReturnItem(returnBook);
+                }
+                else
+                {
+                    Console.WriteLine("Invalid transaction: Unable to return item.");
+                }
                 break;
             default:
                 Console.WriteLine("Invalid transaction type.");

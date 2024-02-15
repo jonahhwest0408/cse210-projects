@@ -30,4 +30,9 @@ public class Catalog
     {
         return items;
     }
+    public List<LibraryBook> ListBooks()
+    {
+        return items.OfType<LibraryBook>().ToList();
+    }
+    
 }

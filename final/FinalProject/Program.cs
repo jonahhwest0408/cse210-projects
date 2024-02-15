@@ -16,13 +16,22 @@ class Program
 
         UserInterface ui = new UserInterface(library);
 
+        List<Member> members = new List<Member>();
+        Member member1 = new Member(90211, "John Doe", "john@gmail.com");
+        members.Add(member1);
+
+        foreach (var member in members)
+        {
+            library.AddMember("John Doe", "john@gmail.com");
+        }
+
+        new UserInterface(library);
         
         bool exit = false;
         while (!exit)
         {
             ui.DisplayMenu();
             int choice = ui.GetUserInput();
-
             switch (choice)
             {
                 case 1:

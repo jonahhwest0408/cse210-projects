@@ -33,8 +33,13 @@ public class Library
     }
 
     //methods for managing members//
-    public void AddMember(Member member)
+    public void AddMember(string name, string contactInfo)
     {
+        // Generate a random 5-digit member ID
+        Random random = new Random();
+        int memberId = random.Next(10000, 99999);
+
+        Member member = new Member(memberId, name, contactInfo);
         members.Add(member);
     }
 

@@ -17,4 +17,22 @@ public class LibraryBook : LibraryItem
         ISBN = isbn;
         CurrentAvailability = availability; 
     }
+    public void CheckOut()
+    {
+        Availability = false; 
+    }
+
+    public void Return()
+    {
+        if(!Availability)
+        {
+            Availability = true;
+            Console.WriteLine($"{BookTitle} returned successfully.");
+        }
+        else
+        {
+            Console.WriteLine(($"Error: {BookTitle} is already available."));
+        }
+        
+    }
 }

@@ -2,26 +2,31 @@ using System.Collections.Generic;
 
 public class Member
 {
+    public int MemberID { get; }
     public string Name { get; set; }
-    public int ID { get; set; }
     public string ContactInfo { get; set; }
-    private List<LibraryItem> BorrowedItems { get; }
+    private List<LibraryBook> CheckedOutBooks { get; }
 
-    public Member(string name, int id, string contactInfo)
+    public Member(int memberId, string name, string contactInfo)
     {
+        MemberID = memberId;
         Name = name;
-        ID = id;
         ContactInfo = contactInfo;
-        BorrowedItems = new List<LibraryItem>();
+        CheckedOutBooks = new List<LibraryBook>();
     }
 
-    public void BorrowItem(LibraryItem item)
+    public void BorrowItem(LibraryBook book)
     {
-        BorrowedItems.Add(item);
+        CheckedOutBooks.Add(book);
     }
 
-    public void ReturnItem(LibraryItem item)
+    public void ReturnItem(LibraryBook book)
     {
-        BorrowedItems.Remove(item);
+        CheckedOutBooks.Remove(book);
+    }
+
+    public List<LibraryBook> GetCheckedOutBooks()
+    {
+        return CheckedOutBooks;
     }
 }
