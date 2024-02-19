@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 
 public class UserInterface
 {
@@ -29,31 +30,14 @@ public class UserInterface
         Console.WriteLine("Books in the Library:");
         foreach (var book in library.GetCatalog().ListBooks())
         {
-            // Check if the book is currently checked out
-            bool isAvailable = book.Availability;
+            // Check if the book is currently checked out by any member
+            bool isAvailable = !library.GetMembers().Any(member => member.GetCheckedOutBooks().Contains(book));
 
-            // If the book is not available, check if it's in the list of checked out books of any member
-            if (!isAvailable)
-            {
-                foreach (var member in library.GetMembers())
-                {
-                    if (member.GetCheckedOutBooks().Contains(book))
-                    {
-                        // Book is checked out by a member, so set availability to false
-                        isAvailable = false;
-                        break;
-                    }
-                }
-            }
-
-            // Update the availability status of the book
-            book.Availability = isAvailable;
-
-            // Display the book information with the updated availability status
             string availabilityStatus = isAvailable ? "Available" : "Not Available";
-            Console.WriteLine($"Title: {book.BookTitle}, Author: {book.Author}, Genre: {book.Genre}, ISBN: {book.ISBN}, Availability: {availabilityStatus}");
+            Console.WriteLine($"Title: {book.Title}, Author: {book.Author}, Genre: {book.Genre}, ISBN: {book.ISBN}, Availability: {availabilityStatus}");
         }
     }
+
 
 
     public void DisplayMembers()
